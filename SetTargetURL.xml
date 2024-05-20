@@ -1,0 +1,18 @@
+<AssignMessage name="SetTargetURL">
+    <AssignVariable>
+        <Name>target.url</Name>
+        <Template>{formdata.targetUrl}{formdata.targetPath}</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>target.copy.pathsuffix</Name>
+        <Value>false</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>target.copy.queryparams</Name>
+        <Value>true</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>target.copy.formparams</Name>
+        <Value>true</Value>
+    </AssignVariable>
+</AssignMessage>

@@ -5,6 +5,9 @@
                 <Name>ExtractMultipartFormData</Name>
             </Step>
             <Step>
+                <Name>SetTargetURL</Name>
+            </Step>
+            <Step>
                 <Name>HandlePfx</Name>
             </Step>
         </Request>
@@ -25,6 +28,6 @@
         <VirtualHost>default</VirtualHost>
     </HTTPProxyConnection>
     <RouteRule name="default">
-        <TargetEndpoint>default</TargetEndpoint>
+        <TargetEndpoint>dynamic-target</TargetEndpoint>
     </RouteRule>
 </ProxyEndpoint>
