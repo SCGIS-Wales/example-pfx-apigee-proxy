@@ -1,0 +1,14 @@
+<AssignMessage name="SetResponse">
+    <Set>
+        <Payload contentType="application/json">
+            {
+                "error": "{error}",
+                "dnsResolution": "{dnsResolution}",
+                "tlsHandshake": "{tlsHandshake}",
+                "tlsResponseCode": "{tlsResponseCode}",
+                "tlsResponseMessage": "{tlsResponseMessage}"
+            }
+        </Payload>
+    </Set>
+    <AssignTo createNew="true" transport="http"/>
+</AssignMessage>
