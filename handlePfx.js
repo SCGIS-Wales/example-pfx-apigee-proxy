@@ -1,22 +1,20 @@
-var https = require('https');
-var dns = require('dns');
-var forge = require('node-forge');
-
 try {
     // Extract form data from request
-    var pfxFile = context.getVariable('request.formdata.pfxFile');
-    var pfxPassword = context.getVariable('request.formdata.pfxPassword');
-    var targetUrl = context.getVariable('request.formdata.targetUrl');
-    var targetPath = context.getVariable('request.formdata.targetPath') || '/'; // Default to '/' if not provided
-    var targetMethod = context.getVariable('request.formdata.targetMethod') || 'GET'; // Default to 'GET' if not provided
-    var tlsVersion = context.getVariable('request.formdata.tlsVersion') || 'TLSv1_2_method'; // Default to TLS 1.2
+    var pfxBase64 = context.getVariable('request.formparam.pfxFile');
+    var pfxPassword = context.getVariable('request.formparam.pfxPassword');
+    var targetUrl = context.getVariable('request.formparam.targetUrl');
+    var targetPath = context.getVariable('request.formparam.targetPath') || '/'; // Default to '/' if not provided
+    var targetMethod = context.getVariable('request.formparam.targetMethod') || 'GET'; // Default to 'GET' if not provided
+    var tlsVersion = context.getVariable('request.formparam.tlsVersion') || 'TLSv1_2_method'; // Default to TLS 1.2
 
-    // Decode PFX file
-    var p12Asn1 = forge.asn1.fromDer(pfxFile);
-    var p12 = forge.pkcs12.pkcs12FromAsn1(p12Asn1, false, pfxPassword);
+    // Decode the Base64 encoded PFX file
+    var pfxFile = base64.decode(pfxBase64);
+
+    // Parse the PFX file
+    var pkcs12 = forge.pkcs12.pkcs12FromAsn1(forge.asn1.fromDer(pfxFile), false, pfxPassword);
 
     var keyObj, certObj;
-    p12.safeContents.forEach(function(safeContents) {
+    pkcs12.safeContents.forEach(function(safeContents) {
         safeContents.safeBags.forEach(function(safeBag) {
             if (safeBag.type === forge.pki.oids.certBag) {
                 certObj = forge.pki.certificateToPem(safeBag.cert);
@@ -40,11 +38,11 @@ try {
     var hostname = url.hostname;
 
     // DNS Resolution Test
-    dns.lookup(hostname, function(err, address, family) {
+    dns.resolve(hostname, function(err, addresses) {
         if (err) {
             context.setVariable('dnsResolution', 'Failed: ' + err.message);
         } else {
-            context.setVariable('dnsResolution', 'Success: ' + address + ', Family: ' + family);
+            context.setVariable('dnsResolution', 'Success: ' + addresses.join(', '));
 
             // Connectivity Test and TLS Handshake
             var options = {
