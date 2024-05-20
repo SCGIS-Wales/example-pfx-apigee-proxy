@@ -10,9 +10,8 @@ try {
     // Decode the Base64 encoded PFX file
     var pfxFile = Base64.decode(pfxBase64);
 
-    // Parse the PFX file (dummy implementation for Apigee environment)
-    // In a real-world scenario, you need a library to parse the PFX file
-    // This example assumes the PFX file is valid and contains the required key and certificate
+    // Dummy implementation for extracting key and certificate from PFX file
+    // This should be replaced with actual logic to parse the PFX file and extract key and certificate
     var keyObj = "dummyPrivateKey"; // Replace with actual key parsing logic
     var certObj = "dummyCertificate"; // Replace with actual cert parsing logic
 
@@ -34,7 +33,7 @@ try {
     context.setVariable('dnsResolution', dnsResolution);
     context.setVariable('connectivityTest', connectivityTest);
     context.setVariable('tlsHandshake', tlsHandshake);
-    context.setVariable('tlsResponseCode', 200);
+    context.setVariable('tlsResponseCode', '200'); // Make sure the code is a string
     context.setVariable('tlsResponseMessage', 'OK');
 
 } catch (e) {
