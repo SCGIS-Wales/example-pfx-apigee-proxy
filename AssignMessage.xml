@@ -4,6 +4,7 @@
             {
                 "error": "{error}",
                 "dnsResolution": "{dnsResolution}",
+                "connectivityTest": "{connectivityTest}",
                 "tlsHandshake": "{tlsHandshake}",
                 "tlsResponseCode": "{tlsResponseCode}",
                 "tlsResponseMessage": "{tlsResponseMessage}"

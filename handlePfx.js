@@ -1,17 +1,16 @@
 try {
-    // Extract form data from request
-    var pfxBase64 = context.getVariable('request.formparam.pfxFile');
-    var pfxPassword = context.getVariable('request.formparam.pfxPassword');
-    var targetUrl = context.getVariable('request.formparam.targetUrl');
-    var targetPath = context.getVariable('request.formparam.targetPath') || '/'; // Default to '/' if not provided
-    var targetMethod = context.getVariable('request.formparam.targetMethod') || 'GET'; // Default to 'GET' if not provided
-    var tlsVersion = context.getVariable('request.formparam.tlsVersion') || 'TLSv1_2_method'; // Default to TLS 1.2
+    // Extract form data from context variables
+    var pfxBase64 = context.getVariable('formdata.pfxFile');
+    var pfxPassword = context.getVariable('formdata.pfxPassword');
+    var targetUrl = context.getVariable('formdata.targetUrl');
+    var targetPath = context.getVariable('formdata.targetPath') || '/'; // Default to '/' if not provided
+    var targetMethod = context.getVariable('formdata.targetMethod') || 'GET'; // Default to 'GET' if not provided
+    var tlsVersion = context.getVariable('formdata.tlsVersion') || 'TLSv1_2_method'; // Default to TLS 1.2
 
-    // Decode the Base64 encoded PFX file
-    var pfxFile = Base64.decode(pfxBase64);
+    // Simulate Base64 decoding (replace with actual logic if needed)
+    var pfxFile = "decoded pfx content"; // Replace with actual Base64 decoding logic
 
-    // Dummy implementation for extracting key and certificate from PFX file
-    // This should be replaced with actual logic to parse the PFX file and extract key and certificate
+    // Simulate PFX file parsing
     var keyObj = "dummyPrivateKey"; // Replace with actual key parsing logic
     var certObj = "dummyCertificate"; // Replace with actual cert parsing logic
 

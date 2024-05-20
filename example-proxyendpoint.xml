@@ -2,6 +2,9 @@
     <PreFlow name="PreFlow">
         <Request>
             <Step>
+                <Name>ExtractMultipartFormData</Name>
+            </Step>
+            <Step>
                 <Name>HandlePfx</Name>
             </Step>
         </Request>

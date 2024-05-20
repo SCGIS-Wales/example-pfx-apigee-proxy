@@ -1,0 +1,10 @@
+<ExtractVariables name="ExtractMultipartFormData">
+    <Source>request</Source>
+    <VariablePrefix>formdata</VariablePrefix>
+    <FormParam name="pfxFile"/>
+    <FormParam name="pfxPassword"/>
+    <FormParam name="targetUrl"/>
+    <FormParam name="targetPath"/>
+    <FormParam name="targetMethod"/>
+    <FormParam name="tlsVersion"/>
+</ExtractVariables>
